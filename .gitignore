@@ -1,0 +1,14 @@
+
+node_modules
+log
+package-lock.json
+dist
+*.zip
+temp
+log
+info
+.vscode
+.expo
+tests
+*.pdf
+info
