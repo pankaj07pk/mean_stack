@@ -61,5 +61,7 @@ router.get('/book', function(req, res, next) {
 //Save Data
 router.post('/addUser',userControlelr.addUser);
 
+router.get('/getUser',userControlelr.getUser);
+
 
 module.exports = router;

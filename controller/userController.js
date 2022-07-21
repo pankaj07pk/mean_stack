@@ -44,3 +44,30 @@ exports.addUser = async function(req,res){
         res.json({error:'Something wrong!'})
     }
 }
+
+
+exports.getUser = async function(req,res){
+    try{
+
+        //Or Condition
+        // let userData = await User.find({ $or: [ { fullName: "Prince"}, { fullName: "Adam Lence" } ] })
+        
+        //And Condition
+        // let userData = await User.find({fullName: "Adam Lence"})
+
+        //Grater than Date Filter
+        // let userData = await User.find({createdAt:{$gte:new Date(Date.now()-1*24*60*60*1000)}})
+
+        //Number
+        // let userData = await User.find({phone:{$gte:9632582540}})
+
+        //Shorting
+        let userData = await User.find().sort({createdAt:-1}) // ASC 1, DESC -1
+
+        res.json(userData);
+
+    }catch(e){
+        console.log(e);
+        res.json({error:'Something wrong!'})
+    }
+}
