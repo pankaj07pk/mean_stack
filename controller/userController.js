@@ -71,3 +71,59 @@ exports.getUser = async function(req,res){
         res.json({error:'Something wrong!'})
     }
 }
+
+
+//Edit user
+exports.editUser = async function(req,res){
+    try{
+
+        let userId = req.params.id;
+        let body = req.body;
+
+        console.log(body.full_Name)
+
+        // let newBody = {
+        //     fullName:body.full_Name,
+        //     phone:body.phone_number,
+        //     email:body.email_address
+        // }
+
+        let editUser = await User.updateOne({_id:userId},{$set:{
+            fullName:body.full_Name,
+            phone:body.phone_number,
+            email:body.email_address
+        }})
+
+        if(editUser){
+            res.json({sucess:'User updated successfully!'})
+        }else{
+            res.json({error:'Something wrong, User not updated!'})
+        }
+
+    }catch(e){
+        console.log(e);
+        res.json({error:'Something wrong!'})
+    }
+}
+
+
+//Delete User
+exports.deleteUser = async function(req,res){
+    try{
+
+        let userId = req.params.id;
+
+        let deleteUser = await User.deleteOne({_id:userId});
+
+
+        if(deleteUser){
+            res.json({sucess:'User deleted successfully!'})
+        }else{
+            res.json({error:'Something wrong, User not deleted!'})
+        }
+
+    }catch(e){
+        console.log(e);
+        res.json({error:'Something wrong!'})
+    }
+}

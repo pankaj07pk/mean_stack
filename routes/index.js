@@ -63,5 +63,10 @@ router.post('/addUser',userControlelr.addUser);
 
 router.get('/getUser',userControlelr.getUser);
 
+//Edit data
+router.post('/editUser/:id',userControlelr.editUser);
+
+router.get('/deleteUser/:id',userControlelr.deleteUser);
+
 
 module.exports = router;
